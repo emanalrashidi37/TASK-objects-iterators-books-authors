@@ -9,9 +9,13 @@ const books = require("./books.json");
  * - returns undefined if no matching book is found
  ****************************************************************/
 function getBookById(bookId, books) {
-  // Your code goes here
+  const thisBook = books.find((book) => book.id === bookId);
+  if (thisBook === null) {
+    return "undefiend";
+  } else return thisBook;
 }
-// console.log(getBookById(12, books));
+
+console.log(getBookById(12, books));
 
 /**************************************************************
  * getAuthorByName(authorName, authors):
@@ -22,17 +26,38 @@ function getBookById(bookId, books) {
  ****************************************************************/
 function getAuthorByName(authorName, authors) {
   // Your code goes here
+  const thisAuthor = authors.find(
+    (author) => author.name.toLowerCase() === authorName.toLowerCase()
+  );
+  if (thisAuthor === null) {
+    return "undefiend";
+  } else return thisAuthor;
 }
-// console.log(getAuthorByName("J.K. Rowling", authors));
+
+console.log(getAuthorByName("J.K. Rowling", authors));
 
 /**************************************************************
  * bookCountsByAuthor(authors):
- * - receives an array of authors
- * - returns an array of objects with the format:
+ * - receives an array of authors (MAP() or FILTER())
+ * - returns an array of objects with the format:   (MAP() or FILTER())
  *    [{ author: <NAME>, bookCount: <NUMBER_OF_BOOKS> }]
  ****************************************************************/
+//  authors.map((element) =>
+//   {
+//     author: "laila alkandery",
+//     bookCount: 4,
+//   },
+//   {
+//     author: " harry potter",
+//     bookCount: 2,
+//   },
+// ]);
+
 function bookCountsByAuthor(authors) {
-  // Your code goes here
+  return authors.map((element) => ({
+    author: element.name,
+    bookCount: element.books.length,
+  }));
 }
 // console.log(bookCountsByAuthor(authors));
 
@@ -44,10 +69,9 @@ function bookCountsByAuthor(authors) {
  *    { <COLOR>: [<BOOK_TITLES>] }
  ****************************************************************/
 function booksByColor(books) {
-  const colors = {};
-
+  const colors = { booksByColor };
   // Your code goes here
-
+  colors.filter((color) => color === books.color);
   return colors;
 }
 // console.log(booksByColor(books));
@@ -73,7 +97,7 @@ function titlesByAuthorName(authorName, authors, books) {
  * Note: assume there will never be a tie
  ****************************************************************/
 function mostProlificAuthor(authors) {
-  // Your code goes here
+  return;
 }
 // console.log(mostProlificAuthor(authors));
 
